@@ -60,37 +60,59 @@ function App() {
   }
 
 //function to generate filtered songs after selecting one tab
-const generateNewSongs=(index)=>{
+// const generateNewSongs=(index)=>{
 
-  let key="";
-  if(index===0){
-    // suppose someOne select 0th tab after 2nd tab 
-    //set the default songsData as the final filtered data, bcz we need to show all of songs now
-    generateSongs();
+//   let key="";
+//   if(index===0){
+//     // suppose someOne select 0th tab after 2nd tab 
+//     //set the default songsData as the final filtered data, bcz we need to show all of songs now
+//     generateSongs();
+//     return;
+//   }
+//   else if(index===1){
+//     key="rock";
+//   }
+//   else if(index===2){
+//     key="pop";
+//   }
+
+//   else if(index===3){
+//     key="jazz";
+//   }
+//   else if(index===4){
+//     key="blues";
+//   }
+
+//   let newSongsArray=songsData.filter((song)=>{
+//     console.log("key: ",key)
+//     return(song.genre.key===key);
+//   })
+
+//   console.log("generateNewSongs triggered and filtered this Data: ", newSongsArray)
+//   setFilteredData(newSongsArray);
+// }
+// inside generateNewSongs
+const generateNewSongs = (index) => {
+  let key = "";
+  if (index === 0) {
+    // ✅ reset instead of re-fetch
+    setFilteredData(songsData);
     return;
-  }
-  else if(index===1){
-    key="rock";
-  }
-  else if(index===2){
-    key="pop";
-  }
-
-  else if(index===3){
-    key="jazz";
-  }
-  else if(index===4){
-    key="blues";
+  } else if (index === 1) {
+    key = "rock";
+  } else if (index === 2) {
+    key = "pop";
+  } else if (index === 3) {
+    key = "jazz";
+  } else if (index === 4) {
+    key = "blues";
   }
 
-  let newSongsArray=songsData.filter((song)=>{
-    console.log("key: ",key)
-    return(song.genre.key===key);
-  })
-
-  console.log("generateNewSongs triggered and filtered this Data: ", newSongsArray)
+  let newSongsArray = songsData.filter((song) => song.genre.key === key);
   setFilteredData(newSongsArray);
-}
+};
+
+  
 //rock pop jazz blues
 
 
