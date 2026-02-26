@@ -13,11 +13,10 @@ const Controls = ({ data }) => {
   let swiper = useSwiper();
 
   useEffect(() => {
-    // Reset to first slide whenever data changes
     swiper.slideTo(0, 1);
   }, [data]);
 
-  return <></>;
+  return null;
 };
 
 const Carousel = ({ data, renderCardComponent }) => {
@@ -26,9 +25,10 @@ const Carousel = ({ data, renderCardComponent }) => {
       <Swiper
         initialSlide={0}
         spaceBetween={40}
-        slidesPerView={4}        // fixed number of visible slides
-        slidesPerGroup={4}       // move 4 slides per click for predictable tests
+        slidesPerView={4}
+        slidesPerGroup={4}
         modules={[Navigation]}
+        navigation // ✅ enable navigation arrows
         allowTouchMove
       >
         <Controls data={data} />
