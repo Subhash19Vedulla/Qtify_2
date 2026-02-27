@@ -16,7 +16,16 @@ const CarouselRight = () => {
 
   return (
     <div className={styles.rightNavigation}>
-      {!isEnd && <RightArrow onClick={() => swiper.slideNext()} />}
+      {!isEnd && (
+        <button
+          className={styles.rightButton}
+          onClick={() => swiper.slideNext()}
+          data-testid="carousel-right"
+          aria-label="Next Slide"
+        >
+          <RightArrow />
+        </button>
+      )}
     </div>
   );
 };
