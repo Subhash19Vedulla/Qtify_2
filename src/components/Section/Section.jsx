@@ -7,11 +7,14 @@ import Button from "../Button/Button";
 const Section = ({ type, title, data }) => {
   const [showAll, setShowAll] = useState(false);
 
+  // Show only first 10 items unless "Show All" clicked
+  const visibleData = showAll ? data : data.slice(0, 10);
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.heading}>
         <h3>{title}</h3>
-        {data.length > 0 && (
+        {data.length > 10 && (
           <Button onClick={() => setShowAll(!showAll)}>
             {showAll ? "Collapse" : "Show All"}
           </Button>
@@ -20,13 +23,13 @@ const Section = ({ type, title, data }) => {
 
       {showAll ? (
         <div className={styles.grid}>
-          {data.map((item, index) => (
+          {visibleData.map((item, index) => (
             <Card key={index} data={item} type={type} />
           ))}
         </div>
       ) : (
         <Carousel
-          data={data}
+          data={visibleData}
           renderCardComponent={(item) => <Card data={item} type={type} />}
         />
       )}
