@@ -11,19 +11,27 @@ const FilterSection = ({ type, title, value, filteredData, handleChangeIndex }) 
       <div className={styles.heading}>
         <h3>{title}</h3>
       </div>
+
+      {/* Tabs for filtering songs */}
       <BasicTabs handleChangeIndex={handleChangeIndex} />
-      {filteredData.length ? (
-        <div className={styles.cardsWrapper}>
+
+      {/* Cards or loading spinner */}
+      {filteredData.length > 0 ? (
+        <div className={styles.cardsWrapper} data-testid="songs-section">
           <Carousel
             data={filteredData}
-            renderCardComponent={(filteredData) => (
-              <Card data={filteredData} type={type} />
+            renderCardComponent={(song) => (
+              <Card
+                data={song}
+                type={type}
+                data-testid="song-card"
+              />
             )}
           />
         </div>
       ) : (
         <div className={styles.progressBar}>
-          <CircularProgress />
+          <CircularProgress data-testid="loading-spinner" />
         </div>
       )}
     </div>
