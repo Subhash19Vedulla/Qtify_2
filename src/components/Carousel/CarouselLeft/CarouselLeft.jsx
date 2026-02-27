@@ -16,7 +16,16 @@ const CarouselLeft = () => {
 
   return (
     <div className={styles.leftNavigation}>
-      {!isBeginning && <LeftArrow onClick={() => swiper.slidePrev()} />}
+      {!isBeginning && (
+        <button
+          className={styles.leftButton}
+          onClick={() => swiper.slidePrev()}
+          data-testid="carousel-left"
+          aria-label="Previous Slide"
+        >
+          <LeftArrow />
+        </button>
+      )}
     </div>
   );
 };
