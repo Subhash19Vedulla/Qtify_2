@@ -6,15 +6,14 @@ import CarouselRight from "./CarouselRight/CarouselRight";
 import 'swiper/css';
 import 'swiper/css/navigation';
 import styles from "./Carousel.module.css";
-
 import { Navigation } from 'swiper/modules';
 
 const Controls = ({ data }) => {
-  let swiper = useSwiper();
+  const swiper = useSwiper();
 
   useEffect(() => {
     swiper.slideTo(0, 1);
-  }, [data]);
+  }, [data, swiper]); // ✅ include swiper dependency
 
   return null;
 };
@@ -28,7 +27,7 @@ const Carousel = ({ data, renderCardComponent }) => {
         slidesPerView={4}
         slidesPerGroup={4}
         modules={[Navigation]}
-        navigation // ✅ enable navigation arrows
+        navigation
         allowTouchMove
       >
         <Controls data={data} />
